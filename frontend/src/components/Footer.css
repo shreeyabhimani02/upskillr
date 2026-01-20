@@ -1,0 +1,148 @@
+.footer {
+  background: #02122a;
+  color: #cbd5f5;
+  padding: 80px 5% 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  height: 45px;
+  margin-bottom: 1rem;
+  margin-left: -42px;
+  opacity: 0.9;
+}
+
+.footer-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #94a3b8;
+  margin-bottom: 1.2rem;
+  margin-left: -35px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1rem;
+  margin-left: -35px;
+}
+
+.footer-socials a {
+  color: #cbd5f5;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-socials a:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.footer-column h4,
+.footer-newsletter h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-left: 30px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 0.7rem;
+  margin-left: 30px
+}
+
+.footer-column a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #3b82f6;
+}
+
+.footer-newsletter p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+  margin-left: 30px
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: 30px
+}
+
+.newsletter-form input {
+  flex: 1;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  color: #ffffff;
+  outline: none;
+}
+
+.newsletter-form input:focus {
+  border-color: #3b82f6;
+}
+
+.newsletter-form button {
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+}
+
+.newsletter-form button:hover {
+  background: #2563eb;
+}
+
+.footer-bottom {
+  border-top: 1px solid #1e293b;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-left: -30px
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 14px;
+}
+
+.footer-bottom-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #ffffff;
+}

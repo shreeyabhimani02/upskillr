@@ -1,0 +1,406 @@
+.learner-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fb;
+  font-family: sans-serif;
+  color: #1c1d1f;
+}
+
+.learner-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 4rem;
+  height: 100%;
+  background: #fff;
+  border-right: 1px solid #dbeafe;
+  transition: width 0.3s ease;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.learner-sidebar:hover {
+  width: 16rem;
+}
+
+.sidebar-content {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+}
+
+.sidebar-btn.inactive {
+  color: #2563eb;
+}
+
+.sidebar-btn.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+.sidebar-btn:hover:not(.active) {
+  background-color: #eff6ff;
+}
+
+.sidebar-label {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.learner-sidebar:hover .sidebar-label {
+  opacity: 1;
+}
+
+.learner-main {
+  margin-left: 4rem;
+  padding: 1.5rem;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+.learner-sidebar:hover ~ .learner-main {
+  margin-left: 16rem;
+}
+
+.learner-container {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.learner-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.learner-welcome {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.learner-subtitle {
+  color: #3b82f6;
+  font-size: 1rem;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.stat-box {
+  background: white;
+  border: 1px solid #dbeafe;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.stat-label-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #3b82f6;
+  text-transform: uppercase;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+
+.tabs-wrapper {
+  margin-top: 1rem;
+}
+
+.tabs-list {
+  display: flex;
+  border-bottom: 1px solid #dbeafe;
+}
+
+.tab-trigger {
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  color: #60a5fa;
+}
+
+.tab-trigger.active {
+  border-bottom: 2px solid #2563eb;
+  color: #2563eb;
+}
+
+.course-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.learner-course-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e5efff;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.learner-course-card img {
+  width: 180px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.learner-course-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.learner-course-card p {
+  font-size: 0.9rem;
+  color: #3b82f6;
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.learner-course-card > div {
+  flex: 1;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #edf2ff;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #2563eb;
+  transition: width 0.4s ease;
+}
+
+.learner-course-card button {
+  margin-left: auto;
+  padding: 0.5rem 1.25rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.learner-course-card button:hover {
+  background-color: #1d4ed8;
+}
+
+@media (max-width: 640px) {
+  .learner-course-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .learner-course-card img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .learner-course-card button {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #eff6ff;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #2563eb;
+  transition: width 0.5s;
+}
+
+.learner-course-card button {
+  align-self: flex-start;
+  padding: 0.4rem 1.25rem;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.learner-course-card button:hover {
+  background-color: #1d4ed8;
+}
+
+.recommendations-section {
+  margin-top: 60px;
+}
+
+.recommendations-section h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.rec-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.rec-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.rec-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.rec-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rec-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.rec-content p {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.explore-btn {
+  margin-top: auto;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.explore-btn:hover {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  transform: translateY(-2px);
+}
+
+.no-rec-text {
+  font-size: 1rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.certs-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #dbeafe;
+}
+
+.cert-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.cert-card button {
+  margin-top: 0.75rem;
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cert-icon {
+  color: #6c63ff;
+  margin-bottom: 10px;
+}
+
+.cert-btn {
+  background: linear-gradient(135deg, #6c63ff, #4f46e5);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cert-btn:hover {
+  opacity: 0.9;
+}
+
+.no-cert-text {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
