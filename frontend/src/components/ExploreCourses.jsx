@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { ChevronDown, Loader2 } from "lucide-react";
 import { Star, User, Tag } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function ExploreCourses() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -20,7 +22,7 @@ function ExploreCourses() {
 
   useEffect(() => {
     const fetchCourses = () => {
-      fetch("http://localhost:5000/api/courses?status=published")
+      fetch(`${API_BASE_URL}/api/courses?status=published`)
         .then(res => res.json())
         .then(data => setCourses(data))
         .catch(err => console.error(err));

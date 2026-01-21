@@ -3,6 +3,8 @@ import "./AuthForm.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const AuthForm = () => {
   const initialFormData = {
     fullName: "",
@@ -38,7 +40,7 @@ const AuthForm = () => {
         "420526056434-k5lp1i9dlm5v8at37s3n0h2cgapj3g1t.apps.googleusercontent.com",
       callback: async (response) => {
         try {
-          const res = await fetch("http://localhost:5000/api/auth/google", {
+          const res = await fetch(`${API_BASE_URL}/api/auth/google`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ idToken: response.credential }),
@@ -95,7 +97,7 @@ const AuthForm = () => {
         if (formData.password !== formData.confirmPassword)
           return setError("Passwords do not match");
 
-        const res = await fetch("http://localhost:5000/api/auth/signup", {
+        const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...formData, role }),
@@ -110,7 +112,7 @@ const AuthForm = () => {
       }
 
       /* LOGIN */
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

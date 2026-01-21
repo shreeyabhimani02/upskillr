@@ -3,6 +3,8 @@ import "./CourseVideos.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function CourseVideos() {
   const { courseId } = useParams();
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ function CourseVideos() {
   const resumeLesson = Number(searchParams.get("lesson")) || 0;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/lessons/${courseId}`)
+    fetch(`${API_BASE_URL}/api/lessons/${courseId}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched lessons:", data);
@@ -40,7 +42,7 @@ function CourseVideos() {
   const fetchProgress = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/enrollment/${courseId}`,
+        `${API_BASE_URL}/api/enrollment/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -100,7 +102,7 @@ function CourseVideos() {
     ((currentLesson + 1) / lessons.length) * 100
   );
 
-  await fetch("http://localhost:5000/api/enrollment/progress", {
+  await fetch(`${API_BASE_URL}/api/enrollment/progress`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,3 +1,4 @@
+console.log("API BASE URL:", import.meta.env.VITE_API_BASE_URL);
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -18,6 +19,8 @@ import './TutorDashboard.css';
 import logoImg from "../assets/upskillr-logo.png";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -76,7 +79,7 @@ const TutorDashboard = () => {
   useEffect(() => {
     if (!user?._id) return;
 
-    fetch(`http://localhost:5000/api/lessons/count/tutor/${user._id}`)
+    fetch(`${API_BASE_URL}/api/lessons/count/tutor/${user._id}`)
       .then(res => res.json())
       .then(data => setLessonCount(data.count))
       .catch(err => console.error("Lesson count error", err));
@@ -85,7 +88,7 @@ const TutorDashboard = () => {
   useEffect(() => {
     if (!user?._id) return;
 
-    fetch(`http://localhost:5000/api/courses/tutor/${user._id}`)
+    fetch(`${API_BASE_URL}/api/courses/tutor/${user._id}`)
       .then(res => res.json())
       .then(data => {
         setCourses(data);
@@ -112,7 +115,7 @@ const TutorDashboard = () => {
 
       await Promise.all(
         courses.map(async (course) => {
-          const res = await fetch(`http://localhost:5000/api/lessons/${course._id}`);
+          const res = await fetch(`${API_BASE_URL}/api/lessons/${course._id}`);
           const lessons = await res.json();
           counts[course._id] = lessons.length;
         })
@@ -304,7 +307,7 @@ const TutorDashboard = () => {
                                 });
 
                                 // 👇 fetch lessons of this course
-                                const res = await fetch(`http://localhost:5000/api/lessons/${course._id}`);
+                                const res = await fetch(`${API_BASE_URL}/api/lessons/${course._id}`);
                                 const lessonData = await res.json();
                                 setEditLessons(lessonData);
 
@@ -321,7 +324,7 @@ const TutorDashboard = () => {
                                 className="btn-edit btn-edit-primary"
                                 onClick={async () => {
                                   await fetch(
-                                    `http://localhost:5000/api/courses/${course._id}/publish`,
+                                    `${API_BASE_URL}/api/courses/${course._id}/publish`,
                                     { method: "PUT" }
                                   );
                                   
@@ -341,7 +344,7 @@ const TutorDashboard = () => {
 
                                 try {
                                   const res = await fetch(
-                                    `http://localhost:5000/api/courses/${course._id}`,
+                                    `${API_BASE_URL}/api/courses/${course._id}`,
                                     { method: "DELETE" }
                                   );
 
@@ -525,7 +528,7 @@ const TutorDashboard = () => {
                   <button 
                     onClick={async () => {
                       try{
-                        const res = await fetch(`http://localhost:5000/api/courses/${editingCourse._id}`, 
+                        const res = await fetch(`${API_BASE_URL}/api/courses/${editingCourse._id}`, 
                       {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
@@ -546,7 +549,7 @@ const TutorDashboard = () => {
                     }
 
                       // 👇 update lessons
-                      await fetch(`http://localhost:5000/api/lessons/${editingCourse._id}`, {
+                      await fetch(`${API_BASE_URL}/api/lessons/${editingCourse._id}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
@@ -756,7 +759,7 @@ const TutorDashboard = () => {
                       console.log("SENDING PAYLOAD:", payload);
 
                       try {
-                        const res = await fetch("http://localhost:5000/api/courses", {
+                        const res = await fetch(`${API_BASE_URL}/api/courses`, {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify(payload),

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./CourseDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function CourseDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,7 +24,7 @@ function CourseDetails() {
   const fetchEnrollment = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/enrollment/${id}`,
+        `${API_BASE_URL}/api/enrollment/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,10 +48,10 @@ function CourseDetails() {
   useEffect(() => {
     const fetchCourseDetails = async () => {
       try {
-        const courseRes = await fetch(`http://localhost:5000/api/courses/${id}`);
+        const courseRes = await fetch(`${API_BASE_URL}/api/courses/${id}`);
         const courseData = await courseRes.json();
 
-        const lessonRes = await fetch(`http://localhost:5000/api/lessons/${id}`);
+        const lessonRes = await fetch(`${API_BASE_URL}/api/lessons/${id}`);
         const lessonData = await lessonRes.json();
 
         setCourse(courseData);
@@ -157,7 +159,7 @@ function CourseDetails() {
                 className="enroll-btn"
                 onClick={async () => {
                   try {
-                    await fetch("http://localhost:5000/api/enrollment", {
+                    await fetch(`${API_BASE_URL}/api/enrollment`, {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json",

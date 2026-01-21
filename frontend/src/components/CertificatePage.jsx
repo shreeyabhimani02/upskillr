@@ -4,6 +4,8 @@ import Certificate from "./Certificate";
 import "./CertificatePage.css";
 import { useAuth } from "../context/AuthContext";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function CertificatePage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ function CertificatePage() {
 
   /* ================= FETCH COURSE ================= */
   useEffect(() => {
-    fetch(`http://localhost:5000/api/courses/${id}`)
+    fetch(`${API_BASE_URL}/api/courses/${id}`)
       .then(res => res.json())
       .then(data => setCourse(data))
       .catch(err => console.error("Course fetch error", err));
@@ -31,7 +33,7 @@ function CertificatePage() {
     const checkCompletion = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/enrollment/my-courses",
+          `${API_BASE_URL}/api/enrollment/my-courses`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

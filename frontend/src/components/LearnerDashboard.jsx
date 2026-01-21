@@ -17,6 +17,8 @@ import {
 import "./LearnerDashboard.css";
 import { useAuth } from "../context/AuthContext";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const LearnerDashboard = () => {
   const [activeTab, setActiveTab] = useState("ongoing");
   const [view, setView] = useState("dashboard");
@@ -34,7 +36,7 @@ const LearnerDashboard = () => {
     const fetchEnrollments = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/enrollment/my-courses",
+          `${API_BASE_URL}/api/enrollment/my-courses`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -58,7 +60,7 @@ const LearnerDashboard = () => {
   useEffect(() => {
     const fetchAllCourses = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/courses");
+        const res = await fetch(`${API_BASE_URL}/api/courses`);
         const data = await res.json();
         setAllCourses(Array.isArray(data) ? data : []);
       } catch (err) {

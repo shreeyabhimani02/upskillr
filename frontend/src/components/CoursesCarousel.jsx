@@ -3,6 +3,8 @@ import "./CoursesCarousel.css";
 import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const bgColors = [
   "#E0F2FE",
   "#DCFCE7",
@@ -17,7 +19,7 @@ const CourseCarousel = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/courses?status=published")
+    fetch(`${API_BASE_URL}/api/courses?status=published`)
       .then(res => res.json())
       .then(data => {
         setCourses(data.slice(0, 6));
