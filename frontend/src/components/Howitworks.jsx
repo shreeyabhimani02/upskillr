@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import "./HowitWorks.css";
+import "./Howitworks.css";
 
 const HowItWorks = () => {
   const steps = [
